@@ -1,18 +1,14 @@
 [project]
 name = "cvgen"
 version = "0.1.0"
-description = "Default template for PDM package"
+description = "CV generating tool built on top of rendercv"
 authors = [
-    {name = "John Choi", email = "5154439+isnbh0@users.noreply.github.com"},
+    { name = "John Choi", email = "5154439+isnbh0@users.noreply.github.com" },
 ]
-dependencies = [
-    "rendercv>=1.13",
-    "pyyaml>=6.0.1",
-    "deepdiff>=7.0.1",
-]
+dependencies = ["rendercv>=1.13", "pyyaml>=6.0.1", "deepdiff>=7.0.1"]
 requires-python = "==3.12.*"
 readme = "README.md"
-license = {text = "MIT"}
+license = { text = "MIT" }
 
 [project.scripts]
 cvgen = "cvgen.cli:app"
@@ -22,12 +18,8 @@ cvgen = "cvgen.cli:app"
 distribution = true
 
 [tool.pdm.dev-dependencies]
-lint = [
-    "ruff>=0.5.6",
-]
-test = [
-    "pytest>=8.3.2",
-]
+lint = ["ruff>=0.5.6"]
+test = ["pytest>=8.3.2"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
@@ -35,3 +27,6 @@ pythonpath = ["src"]
 
 [tool.ruff]
 line-length = 100
+
+[tool.ruff.lint.isort]
+known-first-party = ["cvgen"]
