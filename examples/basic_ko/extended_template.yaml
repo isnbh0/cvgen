@@ -1,0 +1,224 @@
+cv:
+  multi_lang_config:
+    lang_keys:
+      - en
+      - ko
+    default_lang: en
+  filter_config:
+    content_key: content
+    verbosity_key: verbosity
+  name:
+    en: "Your Name"
+    ko: "당신의 이름"
+  location:
+    en: "Your Location"
+    ko: "당신의 위치"
+  email: youremail@yourdomain.com
+  # phone: "+825419999"
+  website: https://yourwebsite.com/
+  social_networks:
+    - network: LinkedIn
+      username: yourusername
+    - network: GitHub
+      username: yourusername
+  sections:
+    welcome_to_RenderCV!:
+      - content:
+          en: '[RenderCV](https://github.com/sinaatalay/rendercv) is a LaTeX-based CV/resume framework. It allows you to create a high-quality CV or resume as a PDF file from a YAML file, with **full Markdown syntax support** and **complete control over the LaTeX code**.'
+          ko: '[RenderCV](https://github.com/sinaatalay/rendercv)는 LaTeX 기반 CV/이력서 프레임워크입니다. YAML 파일에서 **전체 Markdown 구문 지원**과 **LaTeX 코드에 대한 완전한 제어**로 고품질 CV 또는 이력서를 PDF 파일로 만들 수 있습니다.'
+        verbosity: 1.0
+      - content:
+          en: 'The boilerplate content was inspired by [Gayle McDowell](https://github.com/dnl-blkv/mcdowell-cv).'
+          ko: '이 기본 내용은 [Gayle McDowell](https://github.com/dnl-blkv/mcdowell-cv)에서 영감을 받았습니다.'
+        verbosity: 2.0
+    education:
+      - institution:
+          en: "University of Pennsylvania"
+          ko: "펜실베이니아 대학교"
+        area:
+          en: "Computer Science"
+          ko: "컴퓨터 과학"
+        degree:
+          en: "BS"
+          ko: "학사"
+        start_date: 2000-09
+        end_date: 2005-05
+        highlights:
+          content:
+            - en: 'GPA: 3.9/4.0 ([a link to somewhere](https://example.com))'
+              ko: '학점: 3.9/4.0 ([어딘가로의 링크](https://example.com))'
+            - content:
+                en: '**Coursework:** Computer Architecture, Comparison of Learning Algorithms, Computational Theory'
+                ko: '**수강 과목:** 컴퓨터 아키텍처, 학습 알고리즘 비교, 계산 이론'
+              verbosity: 2.0
+          verbosity: 1.0
+    experience:
+      - company:
+          en: "Apple"
+          ko: "애플"
+        position:
+          en: "Software Engineer"
+          ko: "소프트웨어 엔지니어"
+        location:
+          en: "Cupertino, CA"
+          ko: "캘리포니아주 쿠퍼티노"
+        start_date: 2005-06
+        end_date: 2007-08
+        highlights:
+          - content:
+              en: "Reduced time to render user buddy lists by 75% by implementing a prediction algorithm"
+              ko: "예측 알고리즘을 구현하여 사용자 친구 목록 렌더링 시간을 75% 단축"
+            verbosity: 1.0
+          - content:
+              en: "Integrated iChat with Spotlight Search by creating a tool to extract metadata from saved chat transcripts and provide metadata to a system-wide search database"
+              ko: "저장된 채팅 기록에서 메타데이터를 추출하고 시스템 전체 검색 데이터베이스에 메타데이터를 제공하는 도구를 만들어 iChat을 Spotlight 검색과 통합"
+            verbosity: 2.0
+      - company:
+          en: "Microsoft"
+          ko: "마이크로소프트"
+        position:
+          en: "Software Engineer Intern"
+          ko: "소프트웨어 엔지니어 인턴"
+        location:
+          en: "Redmond, WA"
+          ko: "워싱턴주 레드몬드"
+        start_date: 2003-06
+        end_date: 2003-08
+        highlights:
+          - content:
+              en: "Designed a UI for the VS open file switcher (Ctrl-Tab) and extended it to tool windows"
+              ko: "VS 오픈 파일 전환기(Ctrl-Tab)용 UI를 설계하고 도구 창으로 확장"
+            verbosity: 1.0
+          - content:
+              en: "Created a service to provide gradient across VS and VS add-ins, optimizing its performance via caching"
+              ko: "VS 및 VS 애드인 전반에 걸쳐 그래디언트를 제공하는 서비스를 만들고 캐싱을 통해 성능 최적화"
+            verbosity: 1.5
+          - content:
+              en: "Built an app to compute the similarity of all methods in a codebase, reducing the time from $\\mathcal{O}(n^2)$ to $\\mathcal{O}(n \\log n)$"
+              ko: "코드베이스의 모든 메서드의 유사성을 계산하는 앱을 구축하여 시간을 $\\mathcal{O}(n^2)$에서 $\\mathcal{O}(n \\log n)$으로 단축"
+            verbosity: 2.0
+          - content:
+              en: "Created a test case generation tool that creates random XML docs from XML Schema"
+              ko: "XML 스키마에서 무작위 XML 문서를 생성하는 테스트 케이스 생성 도구 제작"
+            verbosity: 1.5
+          - content:
+              en: "Automated the extraction and processing of large datasets from legacy systems using SQL and Perl scripts"
+              ko: "SQL과 Perl 스크립트를 사용하여 레거시 시스템에서 대규모 데이터셋 추출 및 처리 자동화"
+            verbosity: 1.5
+
+    publications:
+      content:
+      - content:
+          title:
+            en: "3D Finite Element Analysis of No-Insulation Coils"
+            ko: "무절연 코일의 3D 유한 요소 분석"
+          authors:
+            - en: "Frodo Baggins"
+              ko: "프로도 배긴스"
+            - en: "***John Doe***"
+              ko: "***존 도***"
+            - en: "Samwise Gamgee"
+              ko: "샘와이즈 갬지"
+          doi: 10.1109/TASC.2023.3340648
+          date: 2004-01
+        verbosity: 1.0
+      verbosity: 1.0
+
+    projects:
+      - name:
+          en: "Multi-User Drawing Tool"
+          ko: "다중 사용자 그리기 도구"
+        date: '[github.com/name/repo](https://github.com/sinaatalay/rendercv)'
+        highlights:
+          - content:
+              en: "Developed an electronic classroom where multiple users can simultaneously view and draw on a \"chalkboard\" with each person's edits synchronized"
+              ko: "여러 사용자가 동시에 '칠판'을 보고 그릴 수 있는 전자 교실을 개발하여 각 사용자의 편집 내용을 동기화"
+            verbosity: 1.5
+          - content:
+              en: "Tools Used: C++, MFC"
+              ko: "사용 도구: C++, MFC"
+            verbosity: 1.0
+      - name:
+          en: "Synchronized Desktop Calendar"
+          ko: "동기화된 데스크톱 캘린더"
+        date: '[github.com/name/repo](https://github.com/sinaatalay/rendercv)'
+        highlights:
+          - content:
+              en: "Developed a desktop calendar with globally shared and synchronized calendars, allowing users to schedule meetings with other users"
+              ko: "전역적으로 공유되고 동기화된 캘린더가 있는 데스크톱 캘린더를 개발하여 사용자가 다른 사용자와 회의를 예약할 수 있도록 함"
+            verbosity: 1.5
+          - content:
+              en: "Tools Used: C#, .NET, SQL, XML"
+              ko: "사용 도구: C#, .NET, SQL, XML"
+            verbosity: 1.0
+      - name:
+          en: "Custom Operating System"
+          ko: "사용자 지정 운영 체제"
+        date: 2002
+        highlights:
+          - content:
+              en: "Built a UNIX-style OS with a scheduler, file system, text editor, and calculator"
+              ko: "스케줄러, 파일 시스템, 텍스트 편집기 및 계산기가 포함된 UNIX 스타일의 OS 구축"
+            verbosity: 1.5
+          - content:
+              en: "Tools Used: C"
+              ko: "사용 도구: C"
+            verbosity: 1.0
+
+    technologies:
+      content:
+      - content:
+          label:
+            en: "Languages"
+            ko: "언어"
+          details:
+            en: "C++, C, Java, Objective-C, C#, SQL, JavaScript"
+            ko: "C++, C, Java, Objective-C, C#, SQL, JavaScript"
+        verbosity: 1.0
+      - content:
+          label:
+            en: "Technologies"
+            ko: "기술"
+          details:
+            en: ".NET, Microsoft SQL Server, XCode, Interface Builder"
+            ko: ".NET, Microsoft SQL Server, XCode, Interface Builder"
+        verbosity: 1.0
+      tags: ["detail"]
+design:
+  theme: classicko
+  font: Source Sans 3
+  font_size: 10pt
+  page_size: letterpaper
+  color: '#004f90'
+  disable_external_link_icons: false
+  disable_page_numbering: false
+  page_numbering_style: NAME - Page PAGE_NUMBER of TOTAL_PAGES
+  disable_last_updated_date: false
+  last_updated_date_style: Last updated in TODAY
+  header_font_size: 30 pt
+  text_alignment: justified
+  seperator_between_connections: ''
+  use_icons_for_connections: true
+  margins:
+    page:
+      top: 2 cm
+      bottom: 2 cm
+      left: 2 cm
+      right: 2 cm
+    section_title:
+      top: 0.3 cm
+      bottom: 0.2 cm
+    entry_area:
+      left_and_right: 0.2 cm
+      vertical_between: 0.2 cm
+      date_and_location_width: 4.5 cm
+      education_degree_width: 1 cm
+    highlights_area:
+      top: 0.10 cm
+      left: 0.4 cm
+      vertical_between_bullet_points: 0.10 cm
+    header:
+      vertical_between_name_and_connections: 0.3 cm
+      bottom: 0.3 cm
+      horizontal_between_connections: 0.5 cm
+  show_timespan_in: []

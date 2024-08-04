@@ -1,0 +1,172 @@
+\documentclass[<<design.font_size>>, <<design.page_size>>]{article}
+
+% Packages
+\usepackage[
+    ignoreheadfoot,
+    top=<<design.margins.page.top>>,
+    bottom=<<design.margins.page.bottom>>,
+    left=<<design.margins.page.left>>,
+    right=<<design.margins.page.right>>,
+    footskip=<<design.margins.page.bottom|divide_length_by(2)>>
+]{geometry}
+\usepackage[explicit]{titlesec}
+\usepackage{tabularx, array}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem, fontawesome5, amsmath}
+\usepackage[
+    pdftitle={<<cv.name>>'s CV},
+    pdfauthor={<<cv.name>>},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref}
+\usepackage[pscoord]{eso-pic}
+\usepackage{calc, bookmark, lastpage, changepage, paracol, ifthen, needspace, iftex}
+
+% Color definition
+\definecolor{primaryColor}{RGB}{<<design.color.as_rgb_tuple()|join(", ")>>}
+
+% Font and language setup
+\usepackage{fontspec}
+\usepackage{kotex}
+
+\setmainfont{Noto Sans KR}[Scale=MatchUppercase]
+\setsansfont{Noto Sans KR}[Scale=MatchUppercase]
+\renewcommand{\familydefault}{\sfdefault}
+
+% Text alignment
+((* if design.text_alignment == "justified-with-no-hyphenation" *))
+\usepackage[none]{hyphenat}
+\sloppy
+((* elif design.text_alignment == "left-aligned" *))
+\raggedright
+((* endif *))
+
+% Page settings
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\columnsep}{0.15cm}
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
+
+((* if design.disable_page_numbering *))
+\pagenumbering{gobble}
+((* else *))
+((* set page_numbering_style_placeholders = {
+"NAME": cv.name,
+"PAGE_NUMBER": "\\thepage{}",
+"TOTAL_PAGES": "\pageref*{LastPage}",
+"TODAY": today
+} *))
+\makeatletter
+\let\ps@customFooterStyle\ps@plain
+\patchcmd{\ps@customFooterStyle}{\thepage}{
+    \color{gray}\textit{\small <<design.page_numbering_style|replace_placeholders_with_actual_values(page_numbering_style_placeholders)>>}
+}{}{}
+\makeatother
+\pagestyle{customFooterStyle}
+((* endif *))
+
+% Section formatting
+\titleformat{\section}{
+    \needspace{4\baselineskip}
+    \Large\color{primaryColor}
+}{
+}{
+}{
+    \textbf{#1}\hspace{0.15cm}\titlerule[0.8pt]\hspace{-0.1cm}
+}[]
+
+\titlespacing{\section}{
+    -1pt
+}{
+    <<design.margins.section_title.top>>
+}{
+    <<design.margins.section_title.bottom>>
+}
+
+% Custom environments
+\newenvironment{highlights}{
+    \begin{itemize}[
+            topsep=<<design.margins.highlights_area.top>>,
+            parsep=<<design.margins.highlights_area.vertical_between_bullet_points>>,
+            partopsep=0pt,
+            itemsep=0pt,
+            leftmargin=<<design.margins.highlights_area.left>> + 10pt
+        ]
+        }{
+    \end{itemize}
+}
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+            topsep=<<design.margins.highlights_area.top>>,
+            parsep=<<design.margins.highlights_area.vertical_between_bullet_points>>,
+            partopsep=0pt,
+            itemsep=0pt,
+            leftmargin=10pt
+        ]
+        }{
+    \end{itemize}
+}
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+            <<design.margins.entry_area.left_and_right>> + 0.00001 cm
+        }{
+            <<design.margins.entry_area.left_and_right>> + 0.00001 cm
+        }
+        }{
+    \end{adjustwidth}
+}
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, <<design.margins.entry_area.date_and_location_width>>}
+    \begin{paracol}{2}
+        }{
+        \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+}
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{<<design.margins.entry_area.education_degree_width>>, \fill, <<design.margins.entry_area.date_and_location_width>>}
+    \begin{paracol}{3}
+        {\raggedright #2} \switchcolumn
+        }{
+        \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+}
+
+\newenvironment{header}{
+\setlength{\topsep}{0pt}\par\kern\topsep\centering\color{primaryColor}\linespread{1.5}
+}{
+\par\kern\topsep
+}
+
+% Last updated text
+((* set last_updated_date_style_placeholders = {
+"TODAY": today,
+} *))
+\newcommand{\placelastupdatedtext}{
+    \AddToShipoutPictureFG*{
+        \put(
+        \LenToUnit{\paperwidth-<<design.margins.page.right>>-<<design.margins.entry_area.left_and_right>>+0.05cm},
+        \LenToUnit{\paperheight-<<design.margins.page.top|divide_length_by(2)>>}
+        ){\vtop{{\null}\makebox[0pt][c]{
+                    \small\color{gray}\textit{<<design.last_updated_date_style|replace_placeholders_with_actual_values(last_updated_date_style_placeholders)>>}\hspace{\widthof{<<design.last_updated_date_style|replace_placeholders_with_actual_values(last_updated_date_style_placeholders)>>}}
+                }}}
+    }
+}
+
+% External links
+\let\hrefWithoutArrow\href
+((* if not design.disable_external_link_icons *))
+\renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
+((* endif *))
