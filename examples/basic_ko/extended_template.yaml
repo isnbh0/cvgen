@@ -186,9 +186,9 @@ cv:
       tags: ["detail"]
 design:
   theme: classicko
-  font: Source Sans 3
+  font: Noto Sans KR
   font_size: 10pt
-  page_size: letterpaper
+  page_size: a4paper
   color: '#004f90'
   disable_external_link_icons: false
   disable_page_numbering: false
