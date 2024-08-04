@@ -14,9 +14,12 @@ requires-python = "==3.12.*"
 readme = "README.md"
 license = {text = "MIT"}
 
+[project.scripts]
+cvgen = "cvgen.cli:app"
+
 
 [tool.pdm]
-distribution = false
+distribution = true
 
 [tool.pdm.dev-dependencies]
 lint = [
@@ -25,3 +28,10 @@ lint = [
 test = [
     "pytest>=8.3.2",
 ]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
+
+[tool.ruff]
+line-length = 100
