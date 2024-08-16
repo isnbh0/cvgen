@@ -9,6 +9,7 @@ from pydantic import BaseModel, Field
 
 from cvgen.utils.collapse import collapse_keys
 from cvgen.utils.filter_compound import filter_compound
+from cvgen.yaml_handler import get_yaml_handler
 
 
 class CollapseConfig(BaseModel):
@@ -97,12 +98,11 @@ def compare_yaml_files(file1: Path, file2: Path) -> CompareResult:
 
 
 def load_yaml_from_file_or_stdin(file_path: Optional[Path]) -> Dict:
+    yaml_handler = get_yaml_handler()
     if file_path is None or str(file_path) == "-":
-        # Read from stdin if no file path is provided or if it's '-'
-        return yaml.safe_load(sys.stdin)
+        return yaml_handler.load_from_string(sys.stdin.read())
     else:
-        with open(file_path, "r", encoding="utf-8") as file:
-            return yaml.safe_load(file)
+        return yaml_handler.load_from_file(file_path)
 
 
 def compare_yaml_content(data1: Dict, data2: Dict) -> CompareResult:
@@ -114,10 +114,10 @@ def compare_yaml_content(data1: Dict, data2: Dict) -> CompareResult:
 
 
 def output_yaml(processed_dict: Dict, output_file: Optional[Path]):
-    processed_yaml = yaml.dump(processed_dict, allow_unicode=True, sort_keys=False)
+    yaml_handler = get_yaml_handler()
+    processed_yaml = yaml_handler.dump_to_string(processed_dict)
     if output_file:
-        with open(output_file, "w", encoding="utf-8") as file:
-            file.write(processed_yaml)
+        yaml_handler.dump_to_file(processed_dict, output_file)
         typer.echo(f"Processed YAML has been written to {output_file}")
     else:
         typer.echo(processed_yaml)
