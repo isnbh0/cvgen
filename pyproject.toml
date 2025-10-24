@@ -5,10 +5,11 @@ description = "CV generating tool built on top of rendercv"
 authors = [
     { name = "John Choi", email = "5154439+isnbh0@users.noreply.github.com" },
 ]
-requires-python = ">=3.12.4"
+requires-python = ">=3.13.3"
 readme = "README.md"
 license = { text = "MIT" }
 dependencies = [
+    "click>=8.0.0,<8.2.0",
     "deepdiff>=7.0.1",
     "pyyaml>=6.0.1",
     "rendercv>=1.13,<2",
