@@ -3,6 +3,8 @@
 rendercv_output
 output*
 .local
+.specstory
+.cursorindexingignore
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
