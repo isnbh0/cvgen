@@ -2,6 +2,7 @@
 .python-version
 rendercv_output
 output*
+.local
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
