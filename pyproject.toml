@@ -1,6 +1,6 @@
 [project]
 name = "cvgen"
-version = "0.2.0"
+version = "0.3.0"
 description = "CV generating tool built on top of rendercv"
 authors = [
     { name = "John Choi", email = "5154439+isnbh0@users.noreply.github.com" },
