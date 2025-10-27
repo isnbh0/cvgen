@@ -185,7 +185,7 @@ cv:
         verbosity: 1.0
       tags: ["detail"]
 design:
-  theme: classicko
+  theme: classic
   page:
     size: a4
     top_margin: 2cm
@@ -206,10 +206,12 @@ design:
   links:
     use_external_link_icon: false
   header:
+    name_font_family: Noto Sans
     name_font_size: 30pt
     vertical_space_between_name_and_connections: 0.3cm
     horizontal_space_between_connections: 0.5cm
     separator_between_connections: ''
+    connections_font_family: Noto Sans
     use_icons_for_connections: true
   section_titles:
     vertical_space_above: 0.5cm
