@@ -185,40 +185,46 @@ cv:
         verbosity: 1.0
       tags: ["detail"]
 design:
-  theme: classicko
-  font: Noto Sans KR
-  font_size: 10pt
-  page_size: a4paper
-  color: '#004f90'
-  disable_external_link_icons: false
-  disable_page_numbering: false
-  page_numbering_style: NAME - Page PAGE_NUMBER of TOTAL_PAGES
-  disable_last_updated_date: false
-  last_updated_date_style: Last updated in TODAY
-  header_font_size: 30 pt
-  text_alignment: justified
-  seperator_between_connections: ''
-  use_icons_for_connections: true
-  margins:
-    page:
-      top: 2 cm
-      bottom: 2 cm
-      left: 2 cm
-      right: 2 cm
-    section_title:
-      top: 0.3 cm
-      bottom: 0.2 cm
-    entry_area:
-      left_and_right: 0.2 cm
-      vertical_between: 0.2 cm
-      date_and_location_width: 4.5 cm
-      education_degree_width: 1 cm
-    highlights_area:
-      top: 0.10 cm
-      left: 0.4 cm
-      vertical_between_bullet_points: 0.10 cm
-    header:
-      vertical_between_name_and_connections: 0.3 cm
-      bottom: 0.3 cm
-      horizontal_between_connections: 0.5 cm
-  show_timespan_in: []
+  theme: classic
+  page:
+    size: a4
+    top_margin: 2cm
+    bottom_margin: 2cm
+    left_margin: 2cm
+    right_margin: 2cm
+    show_page_numbering: false
+    show_last_updated_date: false
+  colors:
+    name: 'rgb(0, 79, 144)'
+    connections: 'rgb(0, 79, 144)'
+    section_titles: 'rgb(0, 79, 144)'
+    links: 'rgb(0, 79, 144)'
+  text:
+    font_family: Noto Sans
+    font_size: 10pt
+    alignment: justified
+  links:
+    use_external_link_icon: false
+  header:
+    name_font_family: Noto Sans
+    name_font_size: 30pt
+    vertical_space_between_name_and_connections: 0.3cm
+    horizontal_space_between_connections: 0.5cm
+    separator_between_connections: ''
+    connections_font_family: Noto Sans
+    use_icons_for_connections: true
+  section_titles:
+    vertical_space_above: 0.5cm
+    vertical_space_below: 0.3cm
+  entries:
+    date_and_location_width: 4.5cm
+    left_and_right_margin: 0.2cm
+    vertical_space_between_entries: 0.2cm
+    show_time_spans_in: []
+  highlights:
+    top_margin: 0.10cm
+    left_margin: 0.4cm
+    vertical_space_between_highlights: 0.10cm
+  entry_types:
+    education_entry:
+      degree_column_width: 1cm
