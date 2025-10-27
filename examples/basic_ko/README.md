@@ -2,7 +2,7 @@
 
 `cvgen` 스크립트를 사용하여 YAML 파일을 처리하고, 최종적으로 `rendercv`를 통해 다양한 형식의 이력서를 생성하는 워크플로우의 한 예시입니다.
 
-⚠️ 제대로 된 LaTeX 한글 렌더링을 위해서는 `kotex`, `xelatex` 등 **LaTeX 한글 지원 패키지가 로컬 환경에 설치**되어 있어야 합니다.
+✨ rendercv 2.0은 Typst를 사용하여 별도의 LaTeX 설치 없이 한글을 포함한 다국어를 기본적으로 지원합니다.
 
 ## 프로세스 개요
 
@@ -17,7 +17,7 @@ make
 ```bash
 cvgen filter extended_template.yaml --target-verbosity 1 --include-tags '' \
 | cvgen collapse -k ko > output_ko.yaml \
-&& rendercv render output_ko.yaml --use-local-latex-command xelatex
+&& rendercv render output_ko.yaml
 ```
 
 이 명령어는 다음과 같은 단계로 실행됩니다:
@@ -103,12 +103,12 @@ projects:
 ### 3. rendercv render
 
 ```
-rendercv render output_ko.yaml --use-local-latex-command xelatex
+rendercv render output_ko.yaml
 ```
 
 - 앞에서 임시 저장한 `output_ko.yaml` 파일을 입력으로 사용합니다.
-- LaTeX 렌더링에는 미리 로컬 환경에 준비한 `xelatex` 명령어를 사용합니다. (한글 지원을 위해 필수!)
-- PDF, TeX, PNG 등 다양한 형식의 출력 파일을 생성합니다.
+- Typst를 사용하여 한글을 포함한 다국어 내용을 렌더링합니다.
+- PDF, Typst, PNG 등 다양한 형식의 출력 파일을 생성합니다.
 
 ## 정리
 
@@ -119,4 +119,3 @@ rendercv render output_ko.yaml --use-local-latex-command xelatex
 ### 참고 링크
 
 - [rendercv CLI docs](https://docs.rendercv.com/user_guide/cli/)
-- [kotex 관련 문서 - KTUG (한글 TeX 사용자 그룹)](http://wiki.ktug.org/wiki/wiki.php/ko.TeX)

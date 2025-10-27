@@ -7,8 +7,13 @@ It is designed to help users maintain a **single source of truth for their resum
 ## Installation
 
 ```bash
-pdm install
+uv sync
 ```
+
+## Requirements
+
+- Python >= 3.13.3
+- rendercv >= 2.0 (uses Typst, no LaTeX required)
 
 ## Examples
 
